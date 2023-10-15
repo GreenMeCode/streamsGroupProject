@@ -10,4 +10,8 @@ public class StudentOps {
                 .filter(student -> student.getGender().equalsIgnoreCase(gender))
                 .toList();
     }
+
+
+
+
 }
