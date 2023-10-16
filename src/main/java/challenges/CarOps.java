@@ -1,20 +1,18 @@
 package challenges;
 
 import domain.Car;
-import domain.Student;
-
-import java.io.StringReader;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.Comparator;
 
-import static java.util.stream.Nodes.collect;
+
 
 
 public class CarOps {
 
-//40
+
+    //40
     public static List<String> filterCarsByMakeAndModel(List<Car> cars) {
         return cars.stream()
                 .map(car -> car.getMake() + " " +  car.getModel())
@@ -29,8 +27,17 @@ public class CarOps {
     public static Optional<Car> findAnyCar(List<Car> cars){
         return cars.stream().findAny();
     }
+ //44
 
-    //44
+    public static Map<Boolean, List<Car>> partitionByPrice(List<Car> cars, double price){
+        return cars.stream()
+                .collect(Collectors.partitioningBy(car -> car.getPrice() > price));
+        
+    }
+
+//45
+
+
 
 
 }

@@ -9,10 +9,12 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static challenges.CarOps.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.filter;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class CarOpsTest {
@@ -51,4 +53,11 @@ public class CarOpsTest {
         assertFalse(filteredCars.isEmpty());
 
     }
+
+    //44
+    void shouldCheckIfCarsPartitioned(){
+        Map<Boolean, List<Car>> filteredcars = partitionByPrice(cars,20);
+        assertEquals(2, filteredcars.size());
+    }
+
 }

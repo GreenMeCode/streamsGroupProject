@@ -5,6 +5,7 @@ import domain.Student;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static challenges.CarOps.*;
@@ -43,6 +44,8 @@ public class Main {
 //44
 
         System.out.println("++++++++++++++++++++++++++++++++");
+        Map<Boolean, List<Car>> carPartition = partitionByPrice(cars, 16000);
+        System.out.println(carPartition);
 
     }
 
