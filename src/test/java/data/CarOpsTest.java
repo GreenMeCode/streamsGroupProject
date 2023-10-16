@@ -9,8 +9,11 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static challenges.CarOps.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CarOpsTest {
 
@@ -21,10 +24,31 @@ public class CarOpsTest {
         cars = FetchData.getCarList();
     }
 
-    @Test
+   //40
+   @Test
     void shouldReturnListCarsMakeAndModel() {
-        List<Car> filteredCars = CarOps.filterCarsByMakeAndModel(cars, "Chevrolet","Corvette");
-        assertEquals("Chevrolet",filteredCars.get(0).getMake());
-        assertEquals("Corvette",filteredCars.get(0).getModel());
+        List<String> filteredCars = filterCarsByMakeAndModel(cars);
+        assertEquals("BMW M",filteredCars.get(15));
+        assertEquals("Oldsmobile Bravada",filteredCars.get(16));
+    }
+
+    //41
+    @Test
+    void shouldReturnFirstModelCarInTheList() {
+        Optional<Car> filteredCars = findFirstCar(cars);
+        assertEquals("Rogue", filteredCars.get().getModel());
+    }
+    @Test
+    void shouldReturnFirstMakeCarInTheList() {
+        Optional<Car> filteredCars = findFirstCar(cars);
+        assertEquals("Nissan", filteredCars.get().getMake());
+    }
+
+    //42
+    @Test
+    void shouldCheckIfAnyCars(){
+        Optional<Car> filteredCars = findAnyCar(cars);
+        assertFalse(filteredCars.isEmpty());
+
     }
 }
